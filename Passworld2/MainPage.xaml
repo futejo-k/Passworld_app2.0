@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Passworld2.MainPage">
+    <VerticalStackLayout Spacing = "50"  Padding = "20">
+        <HorizontalStackLayout Spacing = "100" Padding = "20">
+            <Image Source = "passworld_white_bick.png"
+                   HeightRequest = "45"
+                   WidthRequest = "85" />
+            <ImageButton Source = "settings.png"
+                         x:Name = "SettingsBtn"
+                         Clicked = "OnSettings"/>
+        </HorizontalStackLayout>
+        
+        <HorizontalStackLayout>
+            <Entry x:Name = "SearchPass"
+                   Text = "Search password" />
+            <Button x:Name = "SearchBtn"
+                    Text = "Search"
+                    Clicked = "OnSearch" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+
+</ContentPage>
