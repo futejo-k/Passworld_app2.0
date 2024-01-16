@@ -8,7 +8,7 @@
     Title="Passworld2">
 
     <ShellContent
-        Title = "Homepage"
+        Title="Homepage"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 

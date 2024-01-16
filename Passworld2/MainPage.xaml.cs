@@ -16,5 +16,10 @@
         {
             await DisplayAlert("Good job!", "You clicked the search button!", "OK");
         }
+        
+        private void OnNewPwd(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new NewPwd());
+        }
     }
 }

@@ -3,10 +3,90 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Passworld2.Settings"
              Title="Settings">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ScrollView>
+        <HorizontalStackLayout Padding = "20" Spacing = "50" HorizontalOptions = "Center" VerticalOptions = "Center">
+
+            <VerticalStackLayout Padding = "10" Spacing = "30">
+
+                <Label x:Name = "AccInfo"
+                       Text = "Account Information"
+                       FontSize = "30"
+                       FontAttributes = "Bold" />
+
+                <HorizontalStackLayout Padding = "10" Spacing="45">
+                    <Label x:Name = "StngsUsnTxt"
+                           Text = "Username:" 
+                           FontAttributes = "Bold"
+                           FontSize = "18" />
+                    <Entry x:Name = "StngsUsnEdit"
+                           Text = "Placeholder"
+                           MinimumWidthRequest = "200" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Padding = "10" Spacing = "45">
+                    <Label x:Name = "StngsFNTxt"
+                           Text = "First name:"
+                           FontAttributes = "Bold"
+                           FontSize = "18" />
+                    <Entry x:Name = "StngsFNEdit"
+                           Text = "Placeholder"
+                           MinimumWidthRequest = "200" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Padding = "10" Spacing = "45">
+                    <Label x:Name = "StngsLNTxt"
+                           Text = "Last name:"
+                           FontAttributes = "Bold"
+                           FontSize = "18" />
+                    <Entry x:Name = "StngsLNEdit"
+                           Text = "Placeholder"
+                           MinimumWidthRequest = "200" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Padding = "10" Spacing = "45">
+                    <Label x:Name = "StngsMailTxt"
+                           Text = "E-mail:"
+                           FontAttributes = "Bold"
+                           FontSize = "18" />
+                    <Entry x:Name = "StngsMailEdit"
+                           Text = "Placeholder"
+                           MinimumWidthRequest = "200" />
+                </HorizontalStackLayout>
+
+                <Button x:Name = "ChngInfo"
+                        Text = "Change information"
+                        Clicked = "OnChngInfo" />
+
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Padding = "10" Spacing = "30">
+
+                <Label x:Name = "RstPwdHead"
+                       Text = "Forgot your password?"
+                       FontSize = "30"
+                       FontAttributes = "Bold" />
+
+                <Label x:Name = "RstPwdTxt"
+                       Text = "Did you forget your password for this account?&#10;Not to worry, it happens :)"
+                       FontSize = "15" />
+                <Button x:Name = "RstPwdBtn"
+                        Text = "Change your password"
+                        Clicked = "OnChngPwd" />
+
+                <Label x:Name = "DltAccHead"
+                       Text = "Danger Zone"
+                       FontSize = "30"
+                       FontAttributes = "Bold" />
+
+                <Label x:Name = "DltAccTxt"
+                       Text = "This action cannot be taken back, tread carefully!"
+                       FontSize = "15" />
+                <Button x:Name = "DltAccBtn"
+                        Text = "Delete account"
+                        Clicked = "OnDltAcc" />
+
+            </VerticalStackLayout>
+
+        </HorizontalStackLayout>
+    </ScrollView>
 </ContentPage>

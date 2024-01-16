@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Passworld2.NewPwd"
+             Title="New Password">
+    <VerticalStackLayout Padding = "10" Spacing = "25" HorizontalOptions = "Center" VerticalOptions = "Center">
+
+        <HorizontalStackLayout Padding = "20" Spacing = "25">
+
+            <Label x:Name = "NewUsnTxt"
+                   Text = "Username:"
+                   FontSize = "30" />
+            <Entry x:Name = "NewUsnInput"
+                   MinimumWidthRequest = "250" />
+
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout Padding = "20" Spacing = "25">
+
+            <Label x:Name = "NewPwdTxt"
+                   Text = "Password:"
+                   FontSize = "30" />
+            <Entry x:Name = "NewPwdInput"
+                   MinimumWidthRequest = "250" />
+
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout Padding = "20" Spacing = "25">
+
+            <Label x:Name = "NewWebTxt"
+                   Text = "Website/App:"
+                   FontSize = "30" />
+            <Entry x:Name = "NewWebInput"
+                   MinimumWidthRequest = "250" />
+
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Padding = "20" Spacing = "25">
+
+            <Label x:Name = "NewTypeTxt"
+                   Text = "Type:"
+                   FontSize = "30" />
+            <Picker x:Name = "NewTypePick">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Baboon</x:String>
+                        <x:String>Capuchin Monkey</x:String>
+                        <x:String>Blue Monkey</x:String>
+                        <x:String>Squirrel Monkey</x:String>
+                        <x:String>Golden Lion Tamarin</x:String>
+                        <x:String>Howler Monkey</x:String>
+                        <x:String>Japanese Macaque</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+        </HorizontalStackLayout>
+            
+    </VerticalStackLayout>
+</ContentPage>
