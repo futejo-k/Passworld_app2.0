@@ -9,12 +9,14 @@
                 <ImageButton Source = "settings.png"
                              x:Name = "SettingsBtn"
                              Clicked = "OnSettings"
+                             MaximumHeightRequest = "50"
+                             MaximumWidthRequest = "50"
                              VerticalOptions = "End"/>
                 <ImageButton Source = "new.png"
                              x:Name = "NewPwdBtn"
                              Clicked = "OnNewPwd"
-                             MaximumHeightRequest = "100"
-                             MaximumWidthRequest = "100"
+                             MaximumHeightRequest = "50"
+                             MaximumWidthRequest = "50"
                              VerticalOptions = "End" />
             </HorizontalStackLayout>
             

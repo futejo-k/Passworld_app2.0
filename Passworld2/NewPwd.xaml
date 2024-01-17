@@ -39,21 +39,23 @@
             <Label x:Name = "NewTypeTxt"
                    Text = "Type:"
                    FontSize = "30" />
-            <Picker x:Name = "NewTypePick">
+            <Picker x:Name = "NewTypePick" MinimumWidthRequest = "200">
                 <Picker.ItemsSource>
+                    <!--TODO: picker-->
                     <x:Array Type="{x:Type x:String}">
-                        <x:String>Baboon</x:String>
-                        <x:String>Capuchin Monkey</x:String>
-                        <x:String>Blue Monkey</x:String>
-                        <x:String>Squirrel Monkey</x:String>
-                        <x:String>Golden Lion Tamarin</x:String>
-                        <x:String>Howler Monkey</x:String>
-                        <x:String>Japanese Macaque</x:String>
+                        <x:String>School</x:String>
+                        <x:String>Bank</x:String>
+                        <x:String>Social</x:String>
+                        <x:String>Work</x:String>
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
 
         </HorizontalStackLayout>
-            
+
+        <Button x:Name = "AddPwd"
+                Text = "Add password"
+                Clicked = "OnAddPwd" />
+
     </VerticalStackLayout>
 </ContentPage>

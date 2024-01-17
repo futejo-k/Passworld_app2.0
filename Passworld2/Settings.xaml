@@ -20,7 +20,8 @@
                            FontSize = "18" />
                     <Entry x:Name = "StngsUsnEdit"
                            Text = "Placeholder"
-                           MinimumWidthRequest = "200" />
+                           MinimumWidthRequest = "200"
+                           MaximumWidthRequest = "200" />
                 </HorizontalStackLayout>
 
                 <HorizontalStackLayout Padding = "10" Spacing = "45">
@@ -83,7 +84,17 @@
                        FontSize = "15" />
                 <Button x:Name = "DltAccBtn"
                         Text = "Delete account"
-                        Clicked = "OnDltAcc" />
+                        TextColor = "#FFFFFF"
+                        Clicked = "OnDltAcc">
+                    <Button.Background>
+                        <LinearGradientBrush>
+                            <GradientStop Color = "#BF2121"
+                          Offset="0.1" />
+                            <GradientStop Color = "#FF4545"
+                          Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
 
             </VerticalStackLayout>
 
