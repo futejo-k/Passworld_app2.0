@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="51.994881mm"
+   height="21.968475mm"
+   viewBox="0 0 51.994881 21.968475"
+   version="1.1"
+   id="svg202"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs199">
+    <rect
+       x="47.086346"
+       y="245.04118"
+       width="204.66519"
+       height="73.992828"
+       id="rect9503-0" />
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(72.578691,-123.63307)">
+    <g
+       id="g5427"
+       transform="translate(-99.071487,51.631906)"
+       style="fill:#ffffff">
+      <circle
+         style="fill:none;stroke:#ffffff;stroke-width:4.9;stroke-dasharray:none;stroke-opacity:1"
+         id="path5484-6-0"
+         cx="67.503441"
+         cy="82.985397"
+         r="8.534235" />
+      <text
+         xml:space="preserve"
+         transform="matrix(0.27785745,0,0,0.19771203,13.181684,28.573513)"
+         id="text9501-0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:48px;font-family:Bahnschrift;-inkscape-font-specification:Bahnschrift;white-space:pre;shape-inside:url(#rect9503-0);display:inline;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:16.8189;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"><tspan
+           x="47.085938"
+           y="292.01244"
+           id="tspan573"><tspan
+             style="font-family:Haettenschweiler;-inkscape-font-specification:Haettenschweiler"
+             id="tspan571">PASSW</tspan></tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.32902px;font-family:Haettenschweiler;-inkscape-font-specification:Haettenschweiler;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.91845;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+         x="26.474678"
+         y="92.270828"
+         id="text11875-6"
+         transform="scale(0.99472477,1.0053032)"><tspan
+           id="tspan11873-2"
+           style="fill:#ffffff;stroke-width:2.91845"
+           x="26.474678"
+           y="92.270828">R</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.88491px;font-family:Haettenschweiler;-inkscape-font-specification:Haettenschweiler;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.41243;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+         x="37.119205"
+         y="96.606522"
+         id="text11883-2"
+         transform="scale(1.0562554,0.94674071)"><tspan
+           id="tspan11881-8"
+           style="fill:#ffffff;stroke-width:2.41243"
+           x="37.119205"
+           y="96.606522">D</tspan></text>
+      <path
+         d="m 35.656059,89.316291 h -1.862417 v -2.419 h 0.992659 v 2.038974 h 0.869758 z"
+         id="path3009-0"
+         style="font-size:6.45386px;font-family:Haettenschweiler;-inkscape-font-specification:Haettenschweiler;fill:#ffffff;stroke-width:2.26139;stroke-linecap:round;paint-order:markers fill stroke" />
+    </g>
+  </g>
+</svg>

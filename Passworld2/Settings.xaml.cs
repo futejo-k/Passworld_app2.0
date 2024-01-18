@@ -19,13 +19,14 @@ public partial class Settings : ContentPage
 				StngsFNEdit.Text = "NUHUH";
                 await DisplayAlert(
                     "Success",
-                    "Your personal information was changed!",
+                    "Your personal information has been changed successfully!",
                     "OK");
             }
             catch (Exception)
             {
                 //Other error has occured
-                await DisplayAlert("Error",
+                await DisplayAlert(
+                    "Error",
                     "An error has occured, please try again.",
                     "OK");
             }
@@ -34,7 +35,8 @@ public partial class Settings : ContentPage
 
 	private async void OnChngPwd(object sender, EventArgs e)
 	{
-		if (await this.DisplayAlert("Change your main password",
+		if (await this.DisplayAlert(
+            "Change your main password",
             "Are you sure you want to change your main password?",
             "Yes", "No"))
 		{
@@ -46,7 +48,8 @@ public partial class Settings : ContentPage
             catch (Exception)
             {
                 //Other error has occured
-                await DisplayAlert("Error",
+                await DisplayAlert(
+                    "Error",
                     "An error has occured, please try again.",
                     "OK");
             }
@@ -55,6 +58,10 @@ public partial class Settings : ContentPage
 
 	private async void OnDltAcc(object sender, EventArgs e)
 	{
-		await DisplayAlert("Delelte your account", "Are you sure you want to delete your account? \nThis action cannot be taken back!", "Yes", "No");
+		await DisplayAlert(
+            "Delelte your account",
+            "Are you sure you want to delete your account? \nThis action cannot be taken back!",
+            "Yes",
+            "No");
 	}
 }

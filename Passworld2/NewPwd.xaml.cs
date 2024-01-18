@@ -10,7 +10,7 @@ public partial class NewPwd : ContentPage
 	private async void OnAddPwd(object sender, EventArgs e)
 	{
 		if (await this.DisplayAlert(
-			"Add pass?",
+			"Add password?",
 			"Are you sure about that?",
 			"Yes",
 			"No"))
@@ -20,14 +20,15 @@ public partial class NewPwd : ContentPage
 				NewUsnInput.Text = "NUHUH";
 				await DisplayAlert(
 					"Success",
-					"New password was added successfully!",
+					"New password has been added successfully!",
 					"OK");
                 await Navigation.PushAsync(new MainPage());
             }
             catch (Exception)
             {
                 //Other error has occured
-                await DisplayAlert("Error",
+                await DisplayAlert(
+					"Error",
                     "An error has occured, please try again.",
                     "OK");
             }

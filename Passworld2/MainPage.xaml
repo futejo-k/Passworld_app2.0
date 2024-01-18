@@ -22,7 +22,7 @@
             
             <HorizontalStackLayout>
                 <Entry x:Name = "SearchPass"
-                       Text = "Search password"
+                       Placeholder = "Search password"
                        MinimumWidthRequest = "250" />
                 <Button x:Name = "SearchBtn"
                         Text = "Search"
