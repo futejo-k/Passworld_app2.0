@@ -15,7 +15,7 @@
 
                 <HorizontalStackLayout Padding = "10" Spacing="45">
                     <Label x:Name = "StngsUsnTxt"
-                           Text = "Username:" 
+                           Text = "Username:"
                            FontAttributes = "Bold"
                            FontSize = "18" />
                     <Entry x:Name = "StngsUsnEdit"

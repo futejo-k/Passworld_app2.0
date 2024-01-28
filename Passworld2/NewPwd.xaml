@@ -4,9 +4,7 @@
              x:Class="Passworld2.NewPwd"
              Title="New Password">
     <VerticalStackLayout Padding = "10" Spacing = "25" HorizontalOptions = "Center" VerticalOptions = "Center">
-
         <HorizontalStackLayout Padding = "20" Spacing = "25">
-
             <Label x:Name = "NewUsnTxt"
                    Text = "Username:"
                    FontSize = "30" />
