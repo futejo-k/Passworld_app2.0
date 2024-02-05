@@ -21,7 +21,7 @@ namespace Passworld.ViewModels
         }
 
         [ObservableProperty]
-        private ObservableCollection<Password> _password;
+        private ObservableCollection<Password> _passwords = new();
 
         [ObservableProperty]
         private Password _operatingPassword = new();
@@ -32,22 +32,18 @@ namespace Passworld.ViewModels
         [ObservableProperty]
         private string _busyText;
 
-        [RelayCommand]
-        private async Task LoadPasswordsAsync()
+        public async Task LoadPasswordsAsync()
         {
             await ExecuteAsync(async () =>
             {
                 var passwords = await _context.GetAllAsync<Password>();
                 if (passwords is not null && passwords.Any())
                 {
-                    if (Password is null)
-                    {
-                        Password ??= new ObservableCollection<Password>();
+                    Passwords ??= new ObservableCollection<Password>();
 
-                        foreach (var password in passwords)
-                        {
-                            Password.Add(password);
-                        }
+                    foreach (var password in passwords)
+                    {
+                        Passwords.Add(password);
                     }
                 }
             }, "Fetching passwords...");
@@ -59,8 +55,14 @@ namespace Passworld.ViewModels
         [RelayCommand]
         private async Task SavePasswordAsync()
         {
+            
             if (OperatingPassword is null)
+                return;
+
+            var (isValid, errorMessage) = OperatingPassword.Validate();
+            if (!isValid)
             {
+                await Shell.Current.DisplayAlert("Validation Error", errorMessage, "OK");
                 return;
             }
 
@@ -72,19 +74,25 @@ namespace Passworld.ViewModels
                 {
                     // Creating pass
                     await _context.AddItemAsync<Password>(OperatingPassword);
-                    Password.Add(OperatingPassword);
+                    Passwords.Add(OperatingPassword);
                 }
                 else
                 {
                     // Updating pass
-                    await _context.UpdateItemAsync<Password>(OperatingPassword);
+                    if (await _context.UpdateItemAsync<Password>(OperatingPassword))
+                    {
+                        var passwordCopy = OperatingPassword.Clone();
 
-                    var passwordCopy = OperatingPassword.Clone();
+                        var index = Passwords.IndexOf(OperatingPassword);
+                        Passwords.RemoveAt(index);
 
-                    var index = Password.IndexOf(OperatingPassword);
-                    Password.RemoveAt(index);
-
-                    Password.Insert(index, passwordCopy);
+                        Passwords.Insert(index, passwordCopy);
+                    }
+                    else
+                    {
+                        await Shell.Current.DisplayAlert("Error", "Password updation error", "OK");
+                        return;
+                    }
                 }
 
                 SetOperatingPasswordCommand.Execute(new());
@@ -98,8 +106,8 @@ namespace Passworld.ViewModels
             {
                 if (await _context.DeleteItemByKeyAsync<Password>(id))
                 {
-                    var password = Password.FirstOrDefault(p => p.PId == id);
-                    Password.Remove(password);
+                    var password = Passwords.FirstOrDefault(p => p.PId == id);
+                    Passwords.Remove(password);
                 }
                 else
                 {
@@ -114,7 +122,11 @@ namespace Passworld.ViewModels
             BusyText = busyText ?? "Processing...";
             try
             {
-                await operation.Invoke();
+                await operation?.Invoke();
+            }
+            catch(Exception ex)
+            {
+
             }
             finally
             {

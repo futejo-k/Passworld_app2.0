@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Passworld.ViewModels"
+             xmlns:models="clr-namespace:Passworld.Models"
+             x:DataType="vm:PasswordViewModel"
              x:Class="Passworld2.MainPage">
     <ScrollView>
         <VerticalStackLayout Spacing = "50"  Padding = "20">
@@ -28,6 +31,129 @@
                         Text = "Search"
                         Clicked = "OnSearch" />
             </HorizontalStackLayout>
+
+            <Grid RowDefinitions="*, Auto">
+                <CollectionView Grid.Row="0"
+                                ItemsSource="{Binding Passwords}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout ItemSpacing="10"
+                                           Orientation="Vertical"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Password">
+                            <Grid RowDefinitions="Auto, Auto"
+                                  ColumnDefinitions="*, *, *, Auto, Auto, Auto"
+                                  RowSpacing="5"
+                                  ColumnSpacing="25"
+                                  Padding="5"
+                                  BackgroundColor="{DynamicResource Gray500}">
+                                <Label Grid.Row="0"
+                                       Grid.Column="0"
+                                       Text="{Binding Web}"
+                                       FontAttributes="Bold"
+                                       FontSize="Medium"
+                                       TextTransform="Uppercase"/>
+                                <Label Grid.Row="1"
+                                       Grid.Column="0"
+                                       Text="{Binding Usn, StringFormat='Username: {0}'}"/>
+                                <Label Grid.Row="1"
+                                       Grid.Column="1"
+                                       Text="Password: ••••••••••••••••"/>
+                                <Label Grid.Row="1"
+                                       Grid.Column="2"
+                                       Text="{Binding Type, StringFormat='Type: {0}'}"/>
+                                <ImageButton Source="edit_pwd.png"
+                                             Grid.RowSpan="2"
+                                             Grid.Column="3"
+                                             HeightRequest="5"
+                                             WidthRequest="5"/>
+                                <ImageButton Source="show.png"
+                                             Grid.RowSpan="2"
+                                             Grid.Column="4"
+                                             HeightRequest="5"
+                                             WidthRequest="5"/>
+                                <ImageButton Source="delete.png"
+                                             Grid.RowSpan="2"
+                                             Grid.Column="5"
+                                             HeightRequest="5"
+                                             WidthRequest="5"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.EmptyView>
+                        <ContentView>
+                            <VerticalStackLayout HorizontalOptions="Center"
+                                                 VerticalOptions="Center">
+                                <Label Text="No Passwords Found!"
+                                       FontAttributes="Bold"
+                                       FontSize="Large"
+                                       HorizontalTextAlignment="Center"/>
+                                <Label Text="Try adding a password in the form below."
+                                       HorizontalTextAlignment="Center"
+                                       FontAttributes="Bold"/>
+                            </VerticalStackLayout>
+                        </ContentView>
+                    </CollectionView.EmptyView>  
+                </CollectionView>
+                <VerticalStackLayout Grid.Row="1"
+                                     VerticalOptions="End">
+                    <BoxView Color="{DynamicResource Primary}"
+                             HeightRequest="1"/>
+                    <Grid RowDefinitions="*, Auto"
+                          ColumnDefinitions="*, *, *, *"
+                          Padding="10"
+                          RowSpacing="10"
+                          ColumnSpacing="10">
+                        <VerticalStackLayout Grid.Row="0"
+                                             Grid.Column="0">
+                            <Label Text="Username"
+                                   FontSize="15"
+                                   FontAttributes="Bold"/>
+                            <Entry Placeholder="Enter the username"
+                                   Text="{Binding OperatingPassword.Usn}"
+                                   Margin="0, 6"/>
+                        </VerticalStackLayout>
+                        
+                        <VerticalStackLayout Grid.Row="0"
+                                             Grid.Column="1">
+                            <Label Text="Password"
+                                   FontSize="15"
+                                   FontAttributes="Bold"/>
+                            <Entry Placeholder="Enter the password"
+                                   Text="{Binding OperatingPassword.Pwd}"
+                                   Margin="0, 6"/>
+                        </VerticalStackLayout>
+                        
+                        <VerticalStackLayout Grid.Row="0"
+                                             Grid.Column="2">
+                            <Label Text="Website/App"
+                                   FontSize="15"
+                                   FontAttributes="Bold"/>
+                            <Entry Placeholder="Enter the website/app"
+                                   Text="{Binding OperatingPassword.Web}"
+                                   Margin="0, 6"/>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Row="0"
+                                             Grid.Column="3">
+                            <Label Text="Type"
+                                   FontSize="15"
+                                   FontAttributes="Bold"/>
+                            <Entry Placeholder="Enter the type"
+                                   Text="{Binding OperatingPassword.Type}"
+                                   Margin="0, 6"/>
+                        </VerticalStackLayout>
+
+                        <Button Grid.Row="1"
+                                Grid.ColumnSpan="4"
+                                Text="Add password"
+                                HorizontalOptions="Center"
+                                VerticalOptions="End"
+                                Padding="200, 0"
+                                Command="{Binding SavePasswordCommand}"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Grid>
             
         </VerticalStackLayout>
     </ScrollView>

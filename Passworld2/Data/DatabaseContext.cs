@@ -43,6 +43,12 @@ namespace Passworld.Data
             return await table.Where(predicate).ToListAsync();
         }
 
+        private async Task<TResult> Execute<TTable, TResult>(Func<Task<TResult>> action) where TTable : class, new()
+        {
+            await CreateTableIfNotExist<TTable>();
+            return await action();
+        }
+
         public async Task<TTable> GetItemByKeyAsync<TTable>(object primaryKey) where TTable : class, new()
         {
             await CreateTableIfNotExist<TTable>();
@@ -51,9 +57,11 @@ namespace Passworld.Data
 
         public async Task<bool> AddItemAsync<TTable>(TTable item) where TTable : class, new()
         {
-            await CreateTableIfNotExist<TTable>();
-            return await Database.InsertAsync(item) > 0;
+            //await CreateTableIfNotExist<TTable>();
+            //return await Database.InsertAsync(item) > 0;
+            return await Execute<TTable, bool>(async () => await Database.InsertAsync(item) > 0);
         }
+
 
         public async Task<bool> UpdateItemAsync<TTable>(TTable item) where TTable : class, new()
         {
