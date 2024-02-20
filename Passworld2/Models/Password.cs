@@ -15,7 +15,6 @@ namespace Passworld.Models
         public string Usn { get; set; }
         public string Pwd { get; set; }
         public string Web { get; set; }
-        public string Type { get; set; }
 
         public Password Clone() => MemberwiseClone() as Password;
 
@@ -32,10 +31,6 @@ namespace Passworld.Models
             else if (string.IsNullOrWhiteSpace(Web))
             {
                 return (false, "Website/app is required.");
-            }
-            else if (string.IsNullOrWhiteSpace(Type))
-            {
-                return (false, "Type is required.");
             }
             return (true, null);
         }

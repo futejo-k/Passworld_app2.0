@@ -6,8 +6,10 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using BlowFishCS;
 
 namespace Passworld.ViewModels
 {
@@ -32,6 +34,8 @@ namespace Passworld.ViewModels
         [ObservableProperty]
         private string _busyText;
 
+        BlowFish bf = new BlowFish("9E6EBT6UQMSURM5E");
+
         public async Task LoadPasswordsAsync()
         {
             await ExecuteAsync(async () =>
@@ -53,6 +57,22 @@ namespace Passworld.ViewModels
         private void SetOperatingPassword(Password? password) => OperatingPassword = password ?? new();
 
         [RelayCommand]
+        private async Task Decrypt(Password? password)
+        {
+            OperatingPassword = password ?? new();
+
+            await ExecuteAsync(async () =>
+            {
+                if (OperatingPassword.Pwd != null)
+                {
+                    string pwd = OperatingPassword.Pwd;
+                    OperatingPassword.Pwd = bf.Decrypt_CBC(pwd);
+                    SetOperatingPasswordCommand.Execute(new());
+                }
+            });
+        }
+
+        [RelayCommand]
         private async Task SavePasswordAsync()
         {
             
@@ -67,12 +87,18 @@ namespace Passworld.ViewModels
             }
 
             var busyText = OperatingPassword.PId == 0 ? "Creating password..." : "Updating product...";
+            
 
             await ExecuteAsync(async () =>
             {
                 if (OperatingPassword.PId == 0)
                 {
-                    // Creating pass
+                    string pwd = OperatingPassword.Pwd;
+
+                    string enc = bf.Encrypt_CBC(pwd);
+
+                    OperatingPassword.Pwd = enc;
+
                     await _context.AddItemAsync<Password>(OperatingPassword);
                     Passwords.Add(OperatingPassword);
                 }
@@ -82,6 +108,12 @@ namespace Passworld.ViewModels
                     if (await _context.UpdateItemAsync<Password>(OperatingPassword))
                     {
                         var passwordCopy = OperatingPassword.Clone();
+
+                        string pwd = passwordCopy.Pwd;
+
+                        string enc = bf.Encrypt_CBC(pwd);
+
+                        passwordCopy.Pwd = enc;
 
                         var index = Passwords.IndexOf(OperatingPassword);
                         Passwords.RemoveAt(index);
@@ -94,7 +126,6 @@ namespace Passworld.ViewModels
                         return;
                     }
                 }
-
                 SetOperatingPasswordCommand.Execute(new());
             }, busyText);
         }

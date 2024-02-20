@@ -40,7 +40,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appiconwhite.svg" ForegroundFile="Resources\AppIcon\appiconwhite.svg" Color="#00c965" />
+    <MauiIcon Include="Resources\AppIcon\passworld3d_3.png" ForegroundFile="Resources\AppIcon\passworld3d_3.png" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#00c965" BaseSize="128,128" />
@@ -54,6 +54,12 @@
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\AppIcon\appicon.svg" />
+	  <None Remove="Resources\AppIcon\appiconfg.svg" />
+	  <None Remove="Resources\AppIcon\appiconwhite.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
