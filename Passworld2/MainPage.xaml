@@ -10,9 +10,8 @@
                      Command="{Binding SetOperatingPasswordCommand}"/>
     </ContentPage.ToolbarItems>
 
-    <Grid RowDefinitions="Auto, *">
-
-        <VerticalStackLayout Grid.RowSpan="2"
+    <Grid RowDefinitions="Auto, Auto, *">
+        <VerticalStackLayout Grid.RowSpan="3"
                              VerticalOptions="Center"
                              HorizontalOptions="Center"
                              IsVisible="{Binding IsBusy}">
@@ -23,8 +22,12 @@
                    VerticalOptions="Center"
                    HorizontalOptions="Center"/>
         </VerticalStackLayout>
-            
-        <Grid Grid.Row="1"
+
+        <Entry Grid.Row="1"
+               Placeholder="Enter the encryption key"
+               WidthRequest="200"
+               Text="{Binding PwdKey}"/>
+        <Grid Grid.Row="2"
               RowDefinitions="*, Auto"
               Margin="25">
             <CollectionView Grid.Row="0"

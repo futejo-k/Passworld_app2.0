@@ -34,7 +34,8 @@ namespace Passworld.ViewModels
         [ObservableProperty]
         private string _busyText;
 
-        BlowFish bf = new BlowFish("9E6EBT6UQMSURM5E");
+        [ObservableProperty]
+        private string _pwdKey;
 
         public async Task LoadPasswordsAsync()
         {
@@ -66,6 +67,7 @@ namespace Passworld.ViewModels
                 if (OperatingPassword.Pwd != null)
                 {
                     string pwd = OperatingPassword.Pwd;
+                    BlowFish bf = new BlowFish(PwdKey);
                     OperatingPassword.Pwd = bf.Decrypt_CBC(pwd);
                     SetOperatingPasswordCommand.Execute(new());
                 }
@@ -78,6 +80,11 @@ namespace Passworld.ViewModels
             
             if (OperatingPassword is null)
                 return;
+
+            if (PwdKey is null)
+            {
+                await Shell.Current.DisplayAlert("Validation Error", "Encryption key required.", "OK");
+            }
 
             var (isValid, errorMessage) = OperatingPassword.Validate();
             if (!isValid)
@@ -94,7 +101,8 @@ namespace Passworld.ViewModels
                 if (OperatingPassword.PId == 0)
                 {
                     string pwd = OperatingPassword.Pwd;
-
+                    
+                    BlowFish bf = new BlowFish(PwdKey);
                     string enc = bf.Encrypt_CBC(pwd);
 
                     OperatingPassword.Pwd = enc;
@@ -108,6 +116,7 @@ namespace Passworld.ViewModels
                     if (await _context.UpdateItemAsync<Password>(OperatingPassword))
                     {
                         var passwordCopy = OperatingPassword.Clone();
+                        BlowFish bf = new BlowFish(PwdKey);
 
                         string pwd = passwordCopy.Pwd;
 
